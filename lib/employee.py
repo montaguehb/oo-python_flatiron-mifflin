@@ -44,5 +44,13 @@ class Employee:
     def paid_over(cls, amount):
         return [employee for employee in cls.all if employee.salary > amount]
 
+    @classmethod
+    def find_by_department(cls, department):
+        from manager import Manager
+        department_managers = [manager.name for manager in Manager.all if manager.department == department]
+        return next(employee for employee in cls.all if employee.manager in department_managers)
+
+    def tax_bracket(self):
+        return [employee for employee in Employee.all if employee.salary in range(self.salary, self.salary + 1000)]
     
     

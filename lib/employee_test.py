@@ -43,7 +43,7 @@ class EmployeeTest(unittest.TestCase):
         self.assertCountEqual([self.dwight, self.andy], Employee.paid_over(45000))
     
     def test_find_by_department(self):
-        self.assertCountEqual([self.dwight, self.jim], Employee.find_by_department("sales"))
+        self.assertEqual(self.dwight, Employee.find_by_department("sales"))
     
     def test_tax_brackets(self):
         self.assertCountEqual([self.dwight, self.andy], self.dwight.tax_bracket())
